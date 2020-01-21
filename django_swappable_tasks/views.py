@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
-from utils import run_task
+from django_swappable_tasks.utils import run_task
 
 logger = logging.getLogger(__name__)
 

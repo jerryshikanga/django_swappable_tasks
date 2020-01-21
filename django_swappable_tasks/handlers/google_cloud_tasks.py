@@ -5,8 +5,8 @@ import logging
 from django.conf import settings
 from django.urls import reverse
 
-from utils import get_fully_qualified_task_name, dump_args_into_comma_separated_list
-from . import TasksHandlerBase
+from django_swappable_tasks.utils import get_fully_qualified_task_name, dump_args_into_comma_separated_list
+from django_swappable_tasks.handlers import TasksHandlerBase
 
 logger = logging.getLogger(__name__)
 

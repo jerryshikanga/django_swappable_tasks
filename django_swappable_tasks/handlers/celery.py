@@ -1,4 +1,4 @@
-from handlers import TasksHandlerBase
+from django_swappable_tasks.handlers import TasksHandlerBase
 
 
 class CeleryHandler(TasksHandlerBase):

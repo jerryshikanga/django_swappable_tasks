@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import TasksHandlerView
+from django_swappable_tasks.views import TasksHandlerView
 
 app_name = "django_swappable_tasks"
 

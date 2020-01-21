@@ -11,7 +11,7 @@ from django_swappable_tasks.handlers import TasksHandlerBase
 logger = logging.getLogger(__name__)
 
 
-class GoogleCloudTasks(TasksHandlerBase):
+class GoogleCloudTasksHandler(TasksHandlerBase):
     @classmethod
     def add_task_to_queue(cls, task, task_args, task_kwargs, queue, *args, **kwargs):
         """Create a task for a given queue with an arbitrary payload."""

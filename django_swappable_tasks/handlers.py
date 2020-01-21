@@ -5,7 +5,7 @@ import logging
 from django.conf import settings
 from django.urls import reverse
 
-from django_swappable_tasks.utils import get_fully_qualified_task_name, dump_args_into_comma_separated_list
+from django_swappable_tasks import utils
 
 logger = logging.getLogger(__name__)
 
@@ -39,11 +39,11 @@ class GoogleCloudTasksHandler(TasksHandlerBase):
         if location is None:
             location = settings.GOOGLE_CLOUD_TASKS_LOCATION_NAME
 
-        fully_qualified_task_name = get_fully_qualified_task_name(task)
+        fully_qualified_task_name = utils.get_fully_qualified_task_name(task)
 
         payload = dict(task=fully_qualified_task_name)
         if len(task_args) > 0:
-            payload.update({'args': dump_args_into_comma_separated_list(task_args)})
+            payload.update({'args': utils.dump_args_into_comma_separated_list(task_args)})
         if len(task_kwargs.keys()) > 0:
             payload.update({'kwargs': json.dumps(task_kwargs)})
 

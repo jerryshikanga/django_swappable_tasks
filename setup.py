@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setup(
     name='django_swappable_tasks',  # How you named your package folder (MyLib)
     packages=['django_swappable_tasks',],  # Chose the same as "name"
-    version='0.1.3',  # Start with a small number and increase it with every change you make
+    version='0.1.4',  # Start with a small number and increase it with every change you make
     license='gpl-3.0',  # Chose a license from here: https://help.github.com/articles/licensing-a-repository
     description='Switch between asynchronous task handlers in your django without in seconds.',
     # long_description=long_description,
@@ -16,7 +16,7 @@ setup(
     author_email='jerryshikanga@gmail.com',  # Type in your E-Mail
     url='https://github.com/jerryshikanga/django_swappable_tasks',
     # Provide either the link to your github or to your website
-    download_url='https://github.com/jerryshikanga/django_swappable_tasks/archive/v0.1.3.tar.gz',  # I explain this later on
+    download_url='https://github.com/jerryshikanga/django_swappable_tasks/archive/v0.1.4.tar.gz',  # I explain this later on
     keywords=['Django', 'Tasks', 'Asynchronous', 'Handlers', 'Swap', 'Google Cloud Tasks'],
     # Keywords that define your package best
     install_requires=[  # I get to this in a second

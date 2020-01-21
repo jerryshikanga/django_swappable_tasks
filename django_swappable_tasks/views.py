@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
-from django_swappable_tasks.utils import run_task
+from django_swappable_tasks import utils
 
 logger = logging.getLogger(__name__)
 
@@ -16,14 +16,18 @@ class TasksHandlerView(View):
         task = request.GET.get('task', None)
         args_json = request.GET.get('args', None)
         kwargs_json = request.GET.get('kwargs', None)
-
-        success, result = run_task(task_path=task, args_json=args_json, kwargs_json=kwargs_json)
-        return HttpResponse("Status {} Result : {}".format(success, result))
+        return self.process_task_request(task, args_json, kwargs_json)
 
     def get(self, request, *args, **kwargs):
         task = request.GET.get('task', None)
         args_json = request.GET.get('args', None)
         kwargs_json = request.GET.get('kwargs', None)
+        return self.process_task_request(task, args_json, kwargs_json)
 
-        success, result = run_task(task_path=task, args_json=args_json, kwargs_json=kwargs_json)
-        return HttpResponse("Status {} Result : {}".format(success, result))
+    def process_task_request(self, task, args_json, kwargs_json):
+        success, result = utils.run_task(task_path=task, args_json=args_json, kwargs_json=kwargs_json)
+        if success:
+            status = 200
+        else:
+            status = 400
+        return HttpResponse("Status {} Result : {}".format(success, result), status=status)

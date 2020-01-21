@@ -1,8 +1,7 @@
 import json
 import logging
 
-from django_swappable_tasks.handlers import CeleryHandler
-from django_swappable_tasks.handlers import GoogleCloudTasksHandler
+from django_swappable_tasks import handlers
 
 logger = logging.getLogger(__name__)
 
@@ -62,8 +61,8 @@ def run_task(task_path, args_json, kwargs_json):
 def process_task_asynchronously(task, queue, task_args=[], task_kwargs={}, *args, **kwargs):
     from django.conf import settings
     if settings.DEFAULT_ASYNC_TASKS_HANDLER == "CELERY":
-        return CeleryHandler.add_task_to_queue(task, task_args, task_kwargs, queue)
+        return handlers.CeleryHandler.add_task_to_queue(task, task_args, task_kwargs, queue)
     elif settings.DEFAULT_ASYNC_TASKS_HANDLER == "GOOGLE_CLOUD_TASKS":
-        return GoogleCloudTasksHandler.add_task_to_queue(task, task_args, task_kwargs, queue)
+        return handlers.GoogleCloudTasksHandler.add_task_to_queue(task, task_args, task_kwargs, queue)
     else:
         raise ValueError("Unknown tasks handler {}.".format(settings.DEFAULT_ASYNC_TASKS_HANDLER))

@@ -1,8 +1,8 @@
 import json
 import logging
 
-from django_swappable_tasks.handlers.celery import CeleryHandler
-from django_swappable_tasks.handlers.google_cloud_tasks import GoogleCloudTasksHandler
+from django_swappable_tasks.handlers import CeleryHandler
+from django_swappable_tasks.handlers import GoogleCloudTasksHandler
 
 logger = logging.getLogger(__name__)
 

@@ -44,7 +44,7 @@ To process a task asynchronously do it as below
 from django_swappable_tasks.utils import process_task_asynchronously
 from my project.tasks import my_blocking_task
 task_kwargs = {"name": "John Doe", "age" : 18}
-process_task_asynchronously(process_notification_async, "google_default_queue", task_args=[], task_kwargs= task_kwargs)
+process_task_asynchronously(my_blocking_task, "google_default_queue", task_args=[], task_kwargs= task_kwargs)
 ````
 
 ## Installation
